@@ -52,7 +52,6 @@ async def login(request: Request):
 async def auth(request: Request):
     try:
         access_token = await oauth.google.authorize_access_token(request)
-        print(access_token)
     except OAuthError:
         raise CREDENTIALS_EXCEPTION
     user_data = {'email': access_token["userinfo"]["email"]}
